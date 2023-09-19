@@ -19,8 +19,13 @@ public class PostRepository {
   }
 
   public Post save(Post post) {
-    postID.incrementAndGet();
-    list.put(postID.get(), post);
+    if(post.getId() == 0) {
+      post.setId(postID.incrementAndGet());
+      list.put(post.getId(), post);
+    } else {
+      Post existingPost = list.get(post.getId());
+      existingPost.setContent(post.getContent());
+    }
     return post;
   }
 
