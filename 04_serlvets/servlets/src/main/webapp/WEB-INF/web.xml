@@ -3,18 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!-- web-app - корневой элемент, который описывает web application, т.е. web приложение, внутри у нас находятся
+     два элемента - элемент servlet и элемент servlet-mapping -->
     <response-character-encoding>UTF-8</response-character-encoding>
     <!-- определение servlet'а -->
     <servlet>
-        <servlet-name>main</servlet-name>
-        <servlet-class>ru.netology.servlet.MainServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+        <servlet-name>main</servlet-name> <!-- Имя сервлета -->
+        <servlet-class>ru.netology.servlet.MainServlet</servlet-class> <!-- внутри идет ссылка на класс, т.е. полное
+        имя с учетом пакета -->
+        <load-on-startup>1</load-on-startup> <!-- здесь указано, что надо загрузить наш сервлет первым -->
+    </servlet> <!-- дополнительно можно еще указать последовательность загрузки сервлетов. Какой сервлет будет за каким
+     загружаться -->
 
     <!-- mapping - привязка к определённому URL-->
-    <servlet-mapping>
-        <servlet-name>main</servlet-name>
-        <url-pattern>/</url-pattern>
+    <servlet-mapping> <!-- так как сервлеты работают в первую очередь с запросами, нам надо написать servlet-mapping,
+    т.е. какой сервлет будет запускать по какому пути. В этом примере, сервлет будет запускаться по корневому пути,
+    за это отвечает ниже строчка <url-pattern>/</url-pattern> -->
+        <servlet-name>main</servlet-name> <!-- имя сервлета, который будет запускаться по ниже указанному адресу -->
+        <url-pattern>/</url-pattern> <!-- адрес для запуска сервлета -->
     </servlet-mapping>
 </web-app>
 
