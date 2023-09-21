@@ -13,16 +13,22 @@ public class JavaConfig {
   // название метода - название бина
   public PostController postController() {
     // вызов метода и есть DI
-    return new PostController(postService());
+    return new PostController(postService()); //Вызываем метод postController без параметров, внутри метода создаем
+    // новый postContoller, а в параметр сразу передаем вызов метода postService(), соответственно, в итоге, в параметр
+    // передастся то, что вернет метод postService()
   }
 
   @Bean
   public PostService postService() {
-    return new PostService(postRepository());
+    return new PostService(postRepository()); //вызываем метод postService без параметров, внутри метода создаем
+    // новый postService, а в параметр сразу передаем вызов метода postRepository(), соответственно, в итоге, в параметр
+    // передастся то, что вернет метод postRepository()
   }
 
   @Bean
   public PostRepository postRepository() {
-    return new PostRepositoryStubImpl();
+    return new PostRepositoryStubImpl(); //вызываем метод postRepository, в нем создается новый PostRepositoryStubImpl
+    // и возвращается тому, кто вызвал этот метод. Для создания репозитория - никакие параметры не требуются, он ни от
+    // кого не зависит
   }
 }

@@ -6,9 +6,11 @@ import ru.netology.service.PostService;
 
 public class Main {
   public static void main(String[] args) {
-    final var factory = new DefaultListableBeanFactory();
-    final var reader = new XmlBeanDefinitionReader(factory);
-    reader.loadBeanDefinitions("beans.xml");
+    final var factory = new DefaultListableBeanFactory(); //создаем фабрику бинов
+    final var reader = new XmlBeanDefinitionReader(factory); //создаем ридер для xml файлов с описанием бинов и
+    // передаем в параметр нашу фабрику, которую мы создали выше
+    reader.loadBeanDefinitions("beans.xml"); //вызываем метод reader.loadBeanDefinitions и указываем в методе
+    // имя xml файла в котором идет описание наших бинов
 
     // получаем по имени бина
     final var controller = factory.getBean("postController");

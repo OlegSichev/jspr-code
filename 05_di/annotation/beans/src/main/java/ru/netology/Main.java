@@ -15,6 +15,7 @@ public class Main {
     final var service = context.getBean(PostService.class);
 
     // по умолчанию создаётся лишь один объект на BeanDefinition
-    final var isSame = service == context.getBean("postService");
+    final var isSame = service == context.getBean("postService"); //проверяем, что по имени на сервис возвращается
+    // та же ссылка, что и по типу
   }
 }
