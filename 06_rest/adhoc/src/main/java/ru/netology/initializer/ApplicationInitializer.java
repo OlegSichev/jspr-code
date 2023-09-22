@@ -11,7 +11,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
   public void onStartup(ServletContext servletContext) {
     final var context = new AnnotationConfigWebApplicationContext();
     context.scan("ru.netology");
-    context.refresh();
+    context.refresh(); //инициализация зависимости в три строчки, сколько бы запросов Мы не создавали
 
     final var servlet = new DispatcherServlet(context);
     final var registration = servletContext.addServlet(
